@@ -4,14 +4,15 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 var xo = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-var x = [];
-var o = [];
 var xVal = 'X';
 var oVal = '0';
 // FUNCTIONS
 var turnRun = function(i) {
-  if(finalResult()){
+  if (finalResult()) {
     generatexo();
+  } else {
+    rl.close();
+    return false;
   }
   // var turn = 'X';
   if (i % 2 == 0) {
@@ -20,7 +21,6 @@ var turnRun = function(i) {
     turn = oVal;
   }
   rl.question('Input ' + turn + '? ', (answer) => {
-    x.push(answer);
     if (xo[answer - 1] === parseInt(xo[answer - 1])) {
       xo[answer - 1] = turn;
     }
